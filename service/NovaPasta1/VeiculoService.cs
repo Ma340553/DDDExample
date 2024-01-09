@@ -1,11 +1,6 @@
 ﻿using Domain.commands;
 using Domain.Enums;
 using Domain.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace service.NovaPasta1
 {
@@ -13,28 +8,37 @@ namespace service.NovaPasta1
     {
         public void GetAsyns()
         {
-            throw new NotImplementedException();
+
 
         }
 
-        public Task PostAsync(VeiculoCommands command)
+        public  async Task<string> PostAsync(VeiculoCommands command)
         {
             if (command == null)
-            
-                throw new NotImplementedException();
-            
-            if(command.TipoVeiculo != EtipoVeiculo.SUV
-            &&command.TipoVeiculo != EtipoVeiculo.Hatch
-            &&command.TipoVeiculo != EtipoVeiculo.Sedan
-            )
 
-                            throw new NotImplementedException();
+                return "Todos comados são obrigatorios";
+
+            int AnoAtual = DateTime.Now.Year;
+            if ((AnoAtual - command.AnoFabricacao) > 5)
+                return "O ano do veículo é menor que o permitido";
+
+
+
+
+            if (command.TipoVeiculo != EtipoVeiculo.SUV
+            && command.TipoVeiculo != EtipoVeiculo.Hatch
+            && command.TipoVeiculo != EtipoVeiculo.Sedan
+            )
+                return "O tipo de veiculo não permitido";
+
+            return "Cadastro Realizado com sucesso";
 
         }
+
 
         public void PostAsync()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

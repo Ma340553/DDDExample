@@ -14,7 +14,7 @@ namespace Domain. Interface
         //metodos,
         //não é feita implementação de nada
 
-        Task PostAsync(VeiculoCommands command);
+        Task<string> PostAsync(VeiculoCommands command);
         void PostAsync();
         void GetAsyns();
      }
